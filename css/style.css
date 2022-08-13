@@ -1,0 +1,597 @@
+body {
+  margin: 0;
+  font-family: Raleway, sans-serif;
+  font-size: 14px;
+  color: #6c7279;
+  
+  background-color: #fff;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0 0 10px 0;
+}
+
+
+
+/* Container 
+====================*/
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* делаем отступы, и добавляем их к max-width. чтоб не прилягали плотно элементы (для адаптива) */
+  padding: 0 15px;
+} 
+
+
+
+/* Header 
+====================*/
+
+.header {
+  width: 100%;
+  height: 100px;
+  position: absolute; /* делаем шапку поверх Intro */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  
+}
+
+.header.fixed {
+  position: fixed;
+  background: #30344f;
+  
+  border-bottom: 0; /* убираем нижнюю полоску */
+  height: auto; /* уменьшаем размер подложки */
+}
+
+
+.header.fixed .header__inner {
+  /* уменьшаем паддинги на шапке */
+  padding: 15px 0;
+  
+}
+
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #515369;
+  padding: 35px 0;
+}
+
+
+
+/* Nav
+====================*/
+.nav {
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.nav__link {
+  margin-left: 50px;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.75;
+
+  transition: opacity .1s linear;
+}
+
+.nav__link:first-child {
+  margin-left: 0px;
+}
+
+.nav__link:hover {
+  opacity: 1;
+}
+
+
+
+/* Intro
+====================*/
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 750px;
+  padding-top: 100px;
+  background: #30344f url("../img/intro-bg.jpg") center no-repeat;
+  background-size: cover;
+}
+
+.intro__inner {
+  width: 100%;
+  max-width: 970px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.intro__title {
+  margin: 0 0 30px 0;
+  
+  font-family: "Open Sans", sans-serif;
+  font-size: 65px;
+  line-height: 1.1; /* относительное значение, относительно размера шрифта */
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  
+}
+
+.intro__subtitle {
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 60px; /* отодвигаем кнопку */
+}
+
+
+
+
+/* Button
+====================*/
+.btn {
+  display: inline-block;
+  vertical-align: top; /* выравнивание по вертикальной границе (сверху) */
+  padding: 14px 40px;
+  border-radius: 2px;
+  font-family: Raleway, sans-serif;
+  font-size: 13px;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+
+  transition: background .1s linear;
+}
+
+.btn--red {
+  background-color: #e84545;
+}
+
+.btn--red:hover {
+  background-color: #d23a3a
+}
+
+.btn__long { /* Нижняя кнопка */
+  min-width: 280px;
+}
+
+
+
+
+/* Features
+====================*/
+.features {
+  display: flex;
+  flex-wrap: wrap; /* переносим на новую строку три элемента */
+  margin: 95px 0;
+}
+
+.features__item {
+  width: 33.33333%;
+  text-align: center;
+  padding: 0 40px;
+  margin: 25px 0;
+}
+
+.fetures__icon {
+  margin-bottom: 25px;
+}
+
+.fetures__title {
+  font-size: 14px;
+  color: #2d3033;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.fetures__text {
+  font-size: 14px;
+  color: #6c7279;
+  line-height: 1.5;
+}
+
+
+
+
+/* Works */
+.works {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.works__item {
+  width: 25%;
+  height: 350px;
+  position: relative;
+  overflow: hidden;  /* скрываем все, что выходит за пределы блока works__item */
+
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+
+}
+
+.works__item:hover .works__content {
+  opacity: 1;
+}
+
+.works__photo {
+  position: absolute;
+  /* выравниваем картинку по центру */
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 1;
+
+  min-width: 100%; /* опция для адаптива, так как картинки маленькие */
+}
+
+.works__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(232, 69, 69, .9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; /* значение больше чем у фото, что вышел на передний план */
+
+  opacity: 0; /* скрываем блок чтоб показать его для .works__item:hover */
+
+  transition: opacity .2s linear;
+}
+
+.works__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.works__text {
+  font-size: 14px;
+  color: #fff;
+}
+
+
+
+
+
+
+/* Team
+====================*/
+.team {
+  margin: 100px 0 70px;
+}
+
+.team__inner {
+  display: flex;
+  flex-wrap: wrap;
+
+  /* отрицательные отсупы, равные padding в .team__item, чтоб карточки шли по линии контейнера */
+  margin: 0 -15px;
+}
+
+.team__item {
+  width: 25%;
+
+  /* раздвигаем карточки между собой */
+  padding: 0 15px; 
+
+  /* если карточка перейдет на вторую строку, чтоб не прилепали друк к другу */
+  margin-bottom: 30px;
+}
+
+.team__photo {
+  /* Адаптируем картинку под другие устройства (display: block, max-width, height*/
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  margin-bottom: 20px;
+}
+
+.team__name {
+  font-size: 22px;
+  color: #2d3033;
+  margin-bottom: 8px;
+}
+
+.team__prof { 
+  font-size: 13px;
+  color: #e84545;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.team__text {
+  margin-bottom: 50px;
+  font-size: 14px;
+  color: #6c7279;
+  line-height: 1.5;
+}
+
+
+
+/* Social
+====================*/
+.social {
+  display: flex;
+}
+
+
+.social--footer {
+  justify-content: center;
+}
+
+.social__item {
+  /* выравниваем иконку */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 4px;
+
+  background-color: #fff;
+  border: 1px solid #e8ecee;
+
+  transition: background .1s linear;
+  
+}
+
+.social__item:last-child {
+  margin-right: 0px;
+}
+
+.social__item:hover {
+  background-color: #e8ecee;
+}
+
+.social__item:hover .social__icon {
+  fill: #000;
+}
+
+
+.social--footer .social__item {
+  background-color: transparent;
+  border-width: 2px; /* толщина границы */
+  border-color: #fff;
+  border-radius: 2px;
+}
+
+.social--footer .social__item:last-child {
+  margin-right: 0px;
+}
+
+.social--footer .social__item:hover {
+  background-color: #fff;
+}
+
+.social__icon {
+  display: block;
+  height: 18px;
+  fill: #c6cacc;
+
+  transition: fill .1s linear;
+}
+
+
+.social--footer .social__icon {
+  fill: #fff;
+}
+
+
+
+/* Reviews
+====================*/
+.reviews {
+  overflow: hidden; /* на всякий случай, если будут большие картинки */
+  background-color: #53354a;
+}
+
+
+.reviews__item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reviews__photo {
+  width: 50%;
+  height: 500px;
+  position: relative; /* позиционирование фото */
+}
+
+.reviews__img {
+  position: absolute; /* позиционирование фото */
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.reviews__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  padding-left: 80px;
+}
+
+.reviews__text {
+  font-family: "Cardo", sans-serif;
+  font-size: 36px;
+  font-style: italic;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.reviews__author {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+
+
+/* Download
+====================*/
+.download {
+  margin: 90px 0;
+  text-align: center;
+}
+
+.download__title {
+  font-size: 28px;
+  color: #2d3033;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.download__text {
+  font-size: 13px;
+  color: #2d3033;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+/* Footer
+====================*/
+.footer {
+  background-color: #3a3e64;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 70px 0;
+}
+
+.footer__block {
+  width: 33.3333%;
+  text-align: center;
+
+  padding: 0 15px; /* чтоб при адаптиве блоки не слипались */
+}
+
+.footer__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.footer__address {
+  color: rgba(255, 255, 255, .5);
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer__text {
+  color: rgba(255, 255, 255, .5);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+
+
+/* Copyright
+====================*/
+.copyright {
+  background-color: #313454;
+  padding: 20px 0;
+}
+
+.copyright__text {
+  text-align: center;
+  font-size: 14px;
+  color: #6a6a72;
+  line-height: 1.5;
+}
+
+.copyright__text span {
+  color: #fff;
+}
+
+
+
+
+/* Burger */
+.burger {
+  display: none;
+  background: none; /* обнуляем стили у кнопки button */
+  border: none;
+  cursor: pointer;
+  padding: 9px 2px;
+ 
+  
+}
+
+.burger__item { /* бургер меню (полосочки) */
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  font-size: 0;
+  color: transparent;
+
+  position: relative;
+  left: 0;
+  z-index: 1;
+}
+
+.burger__item:before,
+.burger__item:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+ 
+  position: absolute;
+}
+
+.burger__item:before {
+  top: -8px;
+  left: 0;
+}
+
+.burger__item:after {
+  bottom: -8px;
+  left: 0;
+}
